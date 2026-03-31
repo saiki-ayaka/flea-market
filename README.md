@@ -54,9 +54,9 @@ php artisan storage:link
 php artisan migrate
 ```
 
-8. シーディングの実行
+8. シーディングの実行データベースの初期化とデータ投入
 ``` bash
-php artisan db:seed
+php artisan migrate:fresh --seed
 ```
 
 ### アクセスURL

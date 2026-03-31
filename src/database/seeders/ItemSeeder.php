@@ -33,6 +33,50 @@ class ItemSeeder extends Seeder
 
         $items = [
             [
+                'name' => '腕時計',
+                'price' => 15000,
+                'user_id' => $user->id,
+                'brand' => 'Rolax',
+                'description' => 'スタイリッシュなデザインのメンズ腕時計',
+                'image_url' => 'images/watch.jpg',
+                'condition' => 1,
+                'category_ids' => [1, 5],
+            ],
+
+            [
+                'name' => 'HDD',
+                'price' => 5000,
+                'user_id' => $user->id,
+                'brand' => '西芝',
+                'description' => '高速で信頼性の高いハードディスク',
+                'image_url' => 'images/hdd.jpg',
+                'condition' => 2,
+                'category_ids' => [2],
+            ],
+
+            [
+                'name' => '玉ねぎ3束',
+                'price' => 300,
+                'user_id' => $user2->id,
+                'brand' => 'なし',
+                'description' => '新鮮な玉ねぎ3束のセット',
+                'image_url' => 'images/onion.jpg',
+                'condition' => 3,
+                'category_ids' => [10],
+            ],
+
+            [
+                'name' => '革靴',
+                'price' =>4000,
+                'user_id' => $user2->id,
+                'brand' => '',
+                'description' => 'クラシックなデザインの革靴',
+                'image_url' => 'images/shoes.jpg',
+                'condition' => 4,
+                'category_ids' => [1, 5],
+            ],
+
+            [
                 'name' => 'ノートPC',
                 'price' => 45000,
                 'user_id' => $user->id,
