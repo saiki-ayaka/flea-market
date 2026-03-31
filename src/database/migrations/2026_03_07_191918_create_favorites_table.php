@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete(); //いいね機能　誰が
-            $table->foreignId('item_id')->constrained()->cascadeOnDelete(); //どの商品を
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
-
-            $table->unique(['user_id', 'item_id']); //同じ人が二重でいいねできない様にする
+            $table->unique(['user_id', 'item_id']);
         });
     }
 

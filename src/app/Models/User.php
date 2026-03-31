@@ -12,11 +12,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
@@ -24,27 +19,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_image',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        // 'password' => 'hashed',
     ];
 
-    //ユーザーがいいねした商品を取得
     public function favoriteItems()
     {
         return $this->belongsToMany(Item::class, 'favorites', 'user_id', 'item_id');
@@ -57,13 +40,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function comments()
     {
-        // UserはたくさんのCommentを持つ
         return $this->hasMany(Comment::class);
     }
 
     public function profile()
 {
-    // Userは1つのProfileを持つ
     return $this->hasOne(Profile::class);
 }
 }

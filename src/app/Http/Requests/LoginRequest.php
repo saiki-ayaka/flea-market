@@ -14,18 +14,17 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // ログインに「名前」や「confirmed」は不要なので削除します
-            'email'    => 'required|email',
+            'email' => 'required|email',
             'password' => 'required',
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
-            'email.required'     => 'メールアドレスを入力してください',
-            'email.email'        => 'メールアドレスの形式で入力してください',
-            'password.required'  => 'パスワードを入力してください',
+            'email.required' => 'メールアドレスを入力してください',
+            'email.email' => 'メールアドレスの形式で入力してください',
+            'password.required' => 'パスワードを入力してください',
         ];
     }
 }

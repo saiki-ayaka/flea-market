@@ -1,18 +1,14 @@
-/* --- レイアウト全体 --- */
 .profile {
     width: 100%;
 }
 
-/* --- ユーザー情報（中央寄せ） --- */
 .profile__info {
     max-width: 1200px;
     margin: 40px auto;
     display: flex;
     align-items: center;
-    /* justify-content: center; は削除！左から順番に並べます */
     gap: 40px;
     padding: 0 140px;
-    /* 全体を少し中央に寄せるための余白 */
 }
 
 .profile__image-wrapper {
@@ -20,10 +16,7 @@
     height: 100px;
     background-color: #d9d9d9;
     border-radius: 50%;
-    /* 円形にする */
     overflow: hidden;
-    /* はみ出た分を隠す */
-    /* ↓ 万が一画像がない時に、デフォルトの円を中央に置くため */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,21 +24,14 @@
 
 .profile__image {
     width: 100%;
-    /* 枠の幅に合わせる */
     height: 100%;
-    /* 枠の高さに合わせる */
-
-    /* ↓ ★これが魔法の1行！これがないと引き伸ばされます */
     object-fit: cover;
-
     display: block;
 }
 
-/* 名前とボタンのエリア */
 .profile__user-details {
     display: flex;
     align-items: center;
-    /* width: 100%; は削除！ */
     flex-grow: 0;
     gap: 40px;
 }
@@ -58,7 +44,6 @@
 }
 
 .profile__edit-btn {
-    /* ★ここが魔法の1行！左側の余白を「自動（最大）」にします */
     margin-left: auto;
     border: 1px solid #ff4d4d;
     color: #ff4d4d;
@@ -74,7 +59,6 @@
     color: #fff;
 }
 
-/* --- タブ部分（ここがポイント！） --- */
 .profile__tabs {
     border-bottom: 1px solid #ddd;
     /* 画面の端から端まで引く線 */
@@ -82,7 +66,6 @@
     width: 100%;
 }
 
-/* トップページの .top-tabs__inner と同じ設定にする */
 .profile__tabs-inner {
     max-width: 1200px;
     margin: 0 auto;
@@ -97,27 +80,22 @@
     font-weight: bold;
     font-size: 16px;
     padding: 20px 0;
-    /* トップページと同じ余白 */
     position: relative;
 }
 
-/* アクティブなタブの赤い下線（トップページに合わせるなら border-bottom ではなく color 切り替え） */
 .profile__tab.profile__tab--active {
     color: #ff4d4d;
 }
 
-/* --- 商品グリッド（トップページ .product-grid と全く同じ） --- */
 .profile__item-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* 4カラム固定 */
     gap: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* カードと画像の設定もトップページに合わせる */
 .profile__item-card {
     text-decoration: none;
     display: block;
@@ -144,46 +122,31 @@
     font-size: 16px;
 }
 
-/* --- [追加] Soldラベルのスタイル（トップページと共通） --- */
 .sold-label {
     position: absolute;
     top: 0;
     left: 0;
     background-color: #ff4d4d;
-    /* 赤色 */
     color: #fff;
     padding: 5px 15px;
     font-size: 12px;
     font-weight: bold;
     z-index: 10;
-    /* 画像より上に表示 */
 }
 
-/* ★修正：マイページ用のクラス名「.profile__item-image-wrapper」にする！ ★ */
 .profile__item-image-wrapper {
     position: relative;
-    /* これがないとSoldが画面の変な所に飛びます */
     overflow: hidden;
-    /* リボンがはみ出るのを防ぎます */
 }
 
-
-/* --- マイページのスマホ対応 (768px以下) --- */
 @media screen and (max-width: 768px) {
-
-    /* 1. ユーザー情報エリアの余白をリセット */
     .profile__info {
         flex-direction: column;
-        /* アイコン、名前、ボタンを縦に並べる */
         align-items: center;
         text-align: center;
-        padding: 0 20px;
-        /* PC用の140pxを解除 */
         gap: 20px;
-        margin: 20px auto;
     }
 
-    /* 2. 名前とボタンのエリアも縦並びに */
     .profile__user-details {
         flex-direction: column;
         gap: 15px;
@@ -192,16 +155,12 @@
 
     .profile__edit-btn {
         margin-left: 0;
-        /* 左寄せ解除 */
         width: 80%;
-        /* ボタンを押しやすく広げる */
         text-align: center;
     }
 
-    /* 3. タブの余白を調整 */
     .profile__tabs-inner {
         justify-content: center;
-        /* 中央寄せ */
         gap: 20px;
     }
 
@@ -210,7 +169,6 @@
         padding: 15px 0;
     }
 
-    /* 4. 商品グリッドを2列にする（トップページと同じ設定） */
     .profile__item-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px 15px;

@@ -1,18 +1,13 @@
-/* 全体の器 */
 .sell-container {
     max-width: 600px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
-/* 1. 一番上のタイトル（商品の出品） */
 .page-title {
     text-align: center;
-    /* 中央寄せ */
     color: #000;
-    /* 黒文字 */
     font-size: 24px;
-    /* 少し大きめに */
     font-weight: bold;
     border-bottom: 1px solid #ddd;
     padding-bottom: 15px;
@@ -22,9 +17,7 @@
 h2,
 .section-title {
     text-align: left;
-    /* 左寄せ */
     color: #888;
-    /* グレー */
     font-size: 18px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 8px;
@@ -42,7 +35,6 @@ h2,
     margin-bottom: 10px;
 }
 
-/* 画像アップロードエリア */
 .image-upload-area {
     border: 2px dashed #ccc;
     padding: 40px;
@@ -58,7 +50,6 @@ h2,
     cursor: pointer;
 }
 
-/* カテゴリーバッジ */
 .category-grid {
     display: flex;
     flex-wrap: wrap;
@@ -68,13 +59,11 @@ h2,
 
 .category-checkbox {
     display: none;
-    /* チェックボックス本体は隠す */
 }
 
 .category-badge {
     padding: 6px 12px;
     white-space: nowrap;
-    /* 文字を改行させない */
     border: 1px solid #ff4d4d;
     color: #ff4d4d;
     border-radius: 20px;
@@ -83,38 +72,31 @@ h2,
     transition: 0.3s;
 }
 
-/* チェックされた時のバッジの色 */
 .category-checkbox:checked+.category-badge {
     background-color: #ff4d4d;
     color: #fff;
 }
 
-/* 入力欄全般 */
 .full-input,
 .select-wrapper select {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
 }
 
-/* 最初（選択してください）の時の文字色をグレーにする */
 select.is-empty {
     color: #888;
 }
 
-/* 何かを選んだ（is-emptyが消えた）時の文字色 */
 select {
     color: #333;
 }
 
-/* プルダウンを開いた時の中身の文字は常に黒にする */
 select option {
     color: #333;
 }
 
-/* 価格入力（前回分） */
 .price-input-container {
     position: relative;
 }
@@ -134,12 +116,10 @@ select option {
     border-radius: 4px;
 }
 
-/* 出品するボタン */
 .submit-button {
     width: 100%;
     padding: 15px;
     background-color: #ff6666;
-    /* イメージ図の赤色 */
     color: white;
     border: none;
     border-radius: 4px;
@@ -153,30 +133,23 @@ select option {
     background-color: #ff4d4d;
 }
 
-/* エラーメッセージのスタイル */
 .error-message {
     color: #ff4d4d;
-    /* メルカリ風の少し明るい赤 */
     font-size: 14px;
     margin-top: 5px;
     font-weight: bold;
     display: block;
-    /* 改行されるように */
 }
 
-/* 入力欄がエラーの時に枠線を赤くしたい場合（お好みで） */
 input.is-invalid,
 select.is-invalid,
 textarea.is-invalid {
     border: 1px solid #ff4d4d !important;
 }
 
-
-/* --- 商品出品画面のスマホ対応 (768px以下) --- */
 @media screen and (max-width: 768px) {
     .sell-container {
         padding: 20px 15px;
-        /* 全体の余白を少し詰める */
     }
 
     .page-title {
@@ -184,48 +157,36 @@ textarea.is-invalid {
         margin-bottom: 20px;
     }
 
-    /* 1. 画像アップロードエリア */
     .image-upload-area {
         padding: 30px 10px;
-        /* 中の余白を削って、ボタンを押しやすく */
     }
 
     .upload-button {
         display: inline-block;
         width: 80%;
-        /* 指でタップしやすい幅に */
         padding: 12px;
     }
 
-    /* 2. カテゴリーバッジ（ここが重要！） */
     .category-grid {
         gap: 8px;
-        /* バッジ同士の隙間を少し狭く */
     }
 
     .category-badge {
         font-size: 13px;
-        /* 文字を少し小さくして、より多くのバッジを1行に収める */
         padding: 8px 14px;
-        /* タップしやすさは維持 */
     }
 
-    /* 3. 各種入力欄 */
     .full-input,
     .select-wrapper select,
     .price-input-field {
         padding: 15px;
-        /* スマホで入力しやすい高さに */
         font-size: 16px;
-        /* ズーム防止 */
     }
 
-    /* 4. 出品するボタン */
     .submit-button {
         padding: 18px;
         font-size: 18px;
         position: sticky;
-        /* (お好みで) 画面下部に固定しても使いやすいです */
         bottom: 10px;
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     }

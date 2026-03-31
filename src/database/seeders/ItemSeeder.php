@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Item;
 use App\Models\User;
@@ -144,14 +143,11 @@ class ItemSeeder extends Seeder
         ];
 
         foreach ($items as $itemData) {
-            //カテゴリーIDを一旦変数に移し、元のデータから消す
             $categoryIds = $itemData['category_ids'];
             unset($itemData['category_ids']);
 
-            //商品を作成
             $item = Item::create($itemData);
 
-            //中間テーブルにカテゴリーを紐付ける
             $item->categories()->attach($categoryIds);
         }
     }

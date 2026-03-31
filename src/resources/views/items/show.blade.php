@@ -19,7 +19,7 @@
     {{-- 右側：情報セクション --}}
     <div class="detail-info">
         <h1 class="detail-info__title">{{ $item->name }}</h1>
-        <p class="detail-info__brand">ブランド名</p>
+        <p class="detail-info__brand">{{ $item->brand }}</p>
         
         <p class="detail-info__price">
             <span class="price-amount">¥{{ number_format($item->price) }}</span>

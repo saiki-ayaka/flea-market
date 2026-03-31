@@ -96,8 +96,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- 1. 画像プレビュー機能 ---
-    // HTMLの id="image-input" と一致させる
     const imageInput = document.getElementById('image-input');
     if (imageInput) {
         imageInput.addEventListener('change', function (e) {
@@ -112,8 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const img = document.createElement('img');
                 img.src = e.target.result;
                 img.classList.add('preview-img');
-                
-                // スタイル（CSSファイルに .preview-img として書いてもOK）
                 img.style.maxWidth = '100%';
                 img.style.maxHeight = '200px';
                 img.style.display = 'block';
@@ -135,29 +131,22 @@ document.addEventListener('DOMContentLoaded', function() {
         displayInput.addEventListener('input', function(e) {
             let value = e.target.value;
 
-            // 1. 全角数字を半角に変換
             value = value.replace(/[０-９]/g, function(s) {
                 return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
             });
 
-            // 2. カンマを一旦すべて取り除いた「純粋な文字」を作る
             let plainValue = value.replace(/,/g, '');
 
-            // 3. 「カンマなしの状態」が数字のみかチェック
             if (plainValue !== '' && /^\d+$/.test(plainValue)) {
-                // 数字のみなら、カンマを付け直して表示し、hiddenには「数字だけ」を入れる
                 displayInput.value = Number(plainValue).toLocaleString();
-                hiddenInput.value = plainValue; // ここでカンマを消した純粋な数字を渡す！
+                hiddenInput.value = plainValue;
             } else {
-                // 文字（あいう等）が混ざっている場合は、そのまま表示・送信
-                // これで Laravel の integer バリデーションが正常に動く
                 displayInput.value = value;
                 hiddenInput.value = value;
             }
         });
     }
 
-    // --- 3. 商品の状態プルダウンの色制御 ---
     const conditionSelect = document.getElementById('condition-select');
     if (conditionSelect) {
         conditionSelect.addEventListener('change', function() {

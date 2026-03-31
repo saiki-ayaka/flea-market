@@ -24,15 +24,13 @@
     margin-bottom: 8px;
 }
 
-/* 入力フィールド */
-input[type="email"],
-input[type="password"] {
+.login-form input[type="email"],
+.login-form input[type="password"] {
     width: 100%;
     padding: 12px;
     border: 1px solid #333;
-    /* 枠線を少し太めに */
     border-radius: 4px;
-    box-sizing: border-box;
+    font-size: 16px;
 }
 
 /* ログインボタン（スクショの色味） */
@@ -57,7 +55,6 @@ input[type="password"] {
 
 .register-link a {
     color: #3b82f6;
-    /* 青色のリンク */
     text-decoration: none;
     font-size: 14px;
 }
@@ -75,25 +72,13 @@ input[type="password"] {
 /* --- ログイン画面のスマホ対応 (480px以下) --- */
 @media screen and (max-width: 480px) {
     .login-container {
-        /* 幅を固定(400px)ではなく、画面幅の90%にする */
         width: 90%;
-        max-width: none;
         margin: 40px auto;
-        /* 上下の余白も少し詰めると収まりが良いです */
     }
 
     .login-title {
         font-size: 20px;
-        /* タイトルを少しだけ小さく */
         margin-bottom: 30px;
-    }
-
-    /* 入力欄のパディングを少し調整して指でタップしやすく */
-    input[type="email"],
-    input[type="password"] {
-        padding: 15px;
-        font-size: 16px;
-        /* スマホでズームされないための最小サイズ */
     }
 
     .btn-login {

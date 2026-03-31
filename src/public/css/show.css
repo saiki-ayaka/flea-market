@@ -195,6 +195,40 @@
     font-weight: bold;
 }
 
+.detail-info__title {
+    font-size: 2rem;
+    /* サイズはお好みで */
+    margin: 0 0 4px 0;
+    /* 下の余白を4pxだけ残してリセット */
+    line-height: 1.2;
+}
+
+/* 2. ブランド名の設定を修正 */
+.detail-info__brand {
+    font-weight: normal;
+    /* 普通の太さ */
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 0;
+    /* 上の余白をゼロに（念のため） */
+    margin-bottom: 25px;
+    /* 金額とは少し離したいので数値を増やす */
+}
+
+/* 金額の部分はそのまま（または微調整） */
+.price-amount {
+    font-size: 2.2rem;
+    /* さらに少し大きく */
+    line-height: 1;
+}
+
+/* 「(税込)」の文字サイズを調整（数字より小さくするのが一般的です） */
+.price-tax {
+    font-size: 1.1rem;
+    margin-left: 5px;
+    /* 数字との間に少し余白を作る */
+}
+
 .tag {
     background-color: #e0e0e0;
     padding: 5px 15px;

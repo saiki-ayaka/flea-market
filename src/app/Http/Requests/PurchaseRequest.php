@@ -23,18 +23,17 @@ class PurchaseRequest extends FormRequest
     {
         return [
             'payment_method' => ['required'],
-            // 配送先情報がセッション等に存在するかチェックするロジックが必要な場合
-            'postcode'       => ['required'],
-            'address'        => ['required'],
+            'postcode' => ['required'],
+            'address' => ['required'],
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'payment_method.required' => '支払い方法を選択してください',
-            'postcode.required'       => '郵便番号を設定してください',
-            'address.required'        => '配送先を設定してください',
+            'postcode.required' => '郵便番号を設定してください',
+            'address.required' => '配送先を設定してください',
         ];
     }
 }

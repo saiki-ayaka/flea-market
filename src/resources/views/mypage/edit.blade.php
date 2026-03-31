@@ -11,13 +11,11 @@
 
         <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            
             <div class="profile__image-section">
                 <div class="profile__image-preview" id="preview">
                     @if($user->profile_image)
                         <img src="{{ asset('storage/' . $user->profile_image) }}" alt="プロフィール画像">
                     @else
-                        {{-- 画像がない場合はグレーの円やデフォルト画像を表示（CSSで形を整える） --}}
                         <div class="default-circle"></div>
                     @endif
                 </div>

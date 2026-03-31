@@ -13,7 +13,6 @@ class Category extends Model
 
     public function items()
     {
-        // カテゴリはたくさんの商品（Item）に属する
         return $this->belongsToMany(Item::class);
     }
 }

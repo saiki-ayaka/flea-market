@@ -1,11 +1,13 @@
-/* --- レイアウトのベース --- */
+* {
+    box-sizing: border-box;
+}
+
 .l-page {
     margin: 0;
     padding: 0;
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
-/* --- ヘッダー周り --- */
 .main-header {
     background-color: #000;
     color: #fff;
@@ -27,22 +29,16 @@
     margin: 0;
 }
 
-/* ロゴのリンク用スタイル */
 .main-header__logo-link,
 .main-header__logo-link:visited {
-    /* 訪問済みでも色を変えない */
     text-decoration: none;
-    /* 下線を消す */
     color: #fff;
-    /* 文字色を白に強制指定 */
     display: block;
 }
 
-/* ホバーした時 */
 .main-header__logo-link:hover {
     opacity: 0.8;
     color: #fff;
-    /* ホバー時も白を維持（お好みで） */
 }
 
 .main-header__search-input {
@@ -50,20 +46,15 @@
     max-width: 1200px;
     min-width: 300px;
     height: 45px;
-
     margin: 0 50px;
-    padding:0 15px;
+    padding: 0 20px;
     border-radius: 4px;
     border: none;
     box-sizing: border-box;
-
     font-size: 14px;
-    padding: 0 20px;
-    /* 左側の余白を少し広げると文字が見やすくなります */
     color: #333;
 }
 
-/* --- ナビゲーション --- */
 .main-header__nav {
     display: flex;
     align-items: center;
@@ -74,13 +65,15 @@
     text-decoration: none;
     margin-right: 25px;
     font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .main-header__btn-sell {
     background-color: #fff;
     color: #000;
     height: 45px;
-    /* 検索窓と同じ高さに設定 */
     line-height: 45px;
     padding: 0px 30px;
     border-radius: 4px;
@@ -90,43 +83,29 @@
     transition: background-color 0.3s;
 }
 
-
-
-
-/* 画面幅が 768px 以下の時の設定 */
 @media screen and (max-width: 768px) {
-
-    /* 1. ヘッダーの箱を縦並びにする */
     .main-header__container {
         flex-direction: column;
-        padding: 15px 10px;
         gap: 15px;
-        /* 要素の間に隙間を作る */
     }
 
-    /* 2. ロゴの文字が縦にならないように幅を調整 */
     .main-header__logo {
         font-size: 24px;
         text-align: center;
         width: 100%;
     }
 
-    /* 3. 検索窓を画面いっぱいに広げる */
     .main-header__search-form {
         width: 100%;
         order: 3;
-        /* 検索窓を一番下に配置（お好みで） */
     }
 
     .main-header__search-input {
         width: 100%;
         min-width: auto;
-        /* PC用の 300px 指定を解除 */
         margin: 0;
-        /* PC用の横余白 50px をリセット */
     }
 
-    /* 4. ナビゲーション（ログイン・マイページ・出品）を横に並べる */
     .main-header__nav {
         width: 100%;
         justify-content: center;
@@ -136,7 +115,6 @@
 
     .main-header__link {
         margin-right: 0;
-        /* PC用の右余白をリセット */
         font-size: 14px;
     }
 
