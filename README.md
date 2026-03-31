@@ -21,23 +21,37 @@
 
 ### 起動手順
 ## 環境構築
-**Dockerビルド**
-1. `git clone https://github.com/saiki-ayaka/flea-market.git`
+1. リポジトリをクローンし、ディレクトリに移動します。
+```bash
+git clone https://github.com/saiki-ayaka/flea-market.git
+```
+```bash
+cd flea-market
+```
 2. DockerDesktopアプリを立ち上げる
-3. `docker-compose up -d --build`
+3. コンテナをビルド・起動します。
+```bash
+docker-compose up -d --build
+```
 
 **Laravel環境構築**
-1. `docker-compose exec php bash`
-2. `composer install`
-3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
-4. .envに以下の環境変数を追加
+1. PHPコンテナ内に入ります。
+```bash
+docker-compose exec php bash
+```
+2. ライブラリをインストールします。
+```bash
+composer install
+```
+3. .env.example をコピーして .env を作成します。
+```bash
+cp .env.example .env
+```
+4. 作成した .env を開き、以下のメール送信用の認証情報のみ、ご自分の Mailtrap 設定値に書き換えてください。
+（※DB接続などの共通設定は、あらかじめ設定済みのため変更不要です）
 ``` text
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=flea_market_db
-DB_USERNAME=flea_market_user
-DB_PASSWORD=flea_market_pass
+MAIL_USERNAME=null ※ご自分のMailtrap の設定値に書き換えてください。
+MAIL_PASSWORD=null ※ご自分のMailtrap の設定値に書き換えてください。
 ```
 5. アプリケーションキーの作成
 ``` bash
@@ -49,15 +63,11 @@ php artisan key:generate
 php artisan storage:link
 ```
 
-7. マイグレーションの実行
-``` bash
-php artisan migrate
-```
-
-8. シーディングの実行データベースの初期化とデータ投入
+7. データベースの初期化とテストデータの投入
 ``` bash
 php artisan migrate:fresh --seed
 ```
+
 
 ### アクセスURL
 ローカルサーバー起動後、ブラウザで以下にアクセスしてください。
