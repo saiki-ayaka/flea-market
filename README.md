@@ -44,12 +44,17 @@ DB_PASSWORD=flea_market_pass
 php artisan key:generate
 ```
 
-6. マイグレーションの実行
+6. ストレージのシンボリックリンク作成（画像表示に必要）
+``` bash
+php artisan storage:link
+```
+
+7. マイグレーションの実行
 ``` bash
 php artisan migrate
 ```
 
-7. シーディングの実行
+8. シーディングの実行
 ``` bash
 php artisan db:seed
 ```
