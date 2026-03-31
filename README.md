@@ -47,11 +47,16 @@ composer install
 ```bash
 cp .env.example .env
 ```
-4. 作成した .env を開き、以下のメール送信用の認証情報のみ、ご自分の Mailtrap 設定値に書き換えてください。
+4. 作成した .env を開き、以下のメール送信用の認証情報のみ、ご自分の Mailtrap 設定値とStripeキーに書き換えてください。
 （※DB接続などの共通設定は、あらかじめ設定済みのため変更不要です）
+
 ``` text
-MAIL_USERNAME=null ※ご自分のMailtrap の設定値に書き換えてください。
-MAIL_PASSWORD=null ※ご自分のMailtrap の設定値に書き換えてください。
+**メール送信設定 (Mailtrap等)**
+MAIL_USERNAME=null （各自の設定値を入力）
+MAIL_PASSWORD=null （各自の設定値を入力）
+**支払い決済設定 (Stripe)**
+STRIPE_KEY=null （各自の公開可能キーを入力）
+STRIPE_SECRET=null （各自のシークレットキーを入力）
 ```
 5. アプリケーションキーの作成
 ``` bash
