@@ -1,0 +1,114 @@
+/* --- タブ部分 --- */
+.top-tabs {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+}
+
+.top-tabs__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.top-tab {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 20px 0;
+}
+
+.top-tab.active {
+    color: #ff4d4d;
+}
+
+/* --- 商品一覧（ここが重要！） --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4カラム固定 */
+    gap: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 1つ1つの商品カード */
+.product-card {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+/* 画像を正方形に強制する枠 */
+.product-card__image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* これで正方形になる */
+    background-color: #f0f0f0;
+    overflow: hidden;
+    /* はみ出した分をカット */
+    border-radius: 4px;
+    position: relative;
+    /* Soldラベルの基準にする */
+}
+
+/* 画像そのものの設定 */
+.product-card__image {
+    width: 100%;
+    height: 100%;
+    /* 親の正方形いっぱいに広げる */
+    object-fit: cover;
+    /* 縦横比を保って隙間なく埋める */
+    display: block;
+}
+
+.product-card__name {
+    margin-top: 10px;
+    color: #333;
+    font-size: 16px;
+    text-align: left;
+}
+
+/* Soldラベルのスタイル（斜めのリボン風） */
+.sold-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff4d4d;
+    /* 赤色 */
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    /* 斜めにする場合は以下を追加（お好みで） */
+    /* transform: rotate(-45deg) translate(-20%, -50%); */
+    /* transform-origin: top left; */
+}
+
+
+/* 画面幅が768px以下の時（スマホ・タブレット） */
+@media screen and (max-width: 768px) {
+
+    /* グリッドを4列から2列に変更 */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px 15px;
+        /* 余白をスマホ用に少し調整 */
+        padding: 0 15px;
+    }
+
+    /* 商品カード内の文字サイズを少し小さくして収まりを良くする */
+    .product-card__name {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    /* Soldラベルのサイズもスマホ用に微調整（必要あれば） */
+    .sold-label {
+        padding: 3px 10px;
+        font-size: 10px;
+    }
+}

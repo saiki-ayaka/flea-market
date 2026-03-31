@@ -1,0 +1,235 @@
+/* 全体のレイアウト */
+.purchase-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.purchase-content {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+/* 左側：メインセクション */
+.purchase-main {
+    flex: 1;
+}
+
+/* 商品情報エリア */
+.purchase-item {
+    display: flex;
+    gap: 30px;
+    align-items:flex-start;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 30px;
+}
+
+.purchase-item__image {
+    width: 150px;
+    aspect-ratio: 1 / 1;
+    background-color: #f0f0f0;
+}
+
+.purchase-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.purchase-item__detail h2 {
+    font-size: 24px;
+    margin-top: 0px;
+    line-height: 1;
+}
+
+.purchase-item__detail p {
+    font-size: 20px;
+}
+
+/* 各セクション（支払い・配送先） */
+.purchase-section {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.section-header--vertical {
+    display: flex;
+    flex-direction: column;
+    /* 上下並びにする */
+    gap: 20px;
+    /* 文字とボタンの隙間 */
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* セレクトボックスのデザイン (FN023用) */
+.payment-select {
+    width: 400px;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 16px;
+    appearance: none;
+    /* デフォルトの矢印を消す */
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23333' stroke-width='2'%3E%3Cpath d='m2 4 4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-color: #fff;
+    cursor: pointer;
+    margin-left: 60px;
+}
+
+.address-change-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.address-display {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-left: 60px;
+}
+
+/* 右側：サイドバー */
+.purchase-side {
+    width: 350px;
+}
+
+.side-card {
+    border: 1px solid #333;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.row-item-price {
+    border-bottom: 1px solid #333;
+}
+
+.summary-table th,
+.summary-table td {
+    padding: 30px 25px;
+    font-size: 16px;
+}
+
+.summary-table th {
+    text-align: left;
+    font-weight: normal;
+}
+
+.summary-table td {
+    text-align: right;
+}
+
+.purchase-form-wrapper {
+    margin-top: 40px;
+    /* これで表のカードから40px下に押し下げます */
+}
+
+/* 購入ボタン (FN022用) */
+.btn-purchase {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-purchase:hover {
+    opacity: 0.8;
+}
+
+.error-text {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .purchase-content {
+        flex-direction: column;
+    }
+
+    .purchase-side {
+        width: 100%;
+    }
+}
+
+
+/* レスポンシブ対応 (768px以下) */
+@media (max-width: 768px) {
+    .purchase-container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .purchase-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* 1. 商品情報エリア：画像を少し小さくして横並びを維持 */
+    .purchase-item {
+        gap: 20px;
+    }
+
+    .purchase-item__image {
+        width: 100px;
+        /* スマホでは少しコンパクトに */
+    }
+
+    .purchase-item__detail h2 {
+        font-size: 20px;
+    }
+
+    /* 2. ★重要：左側の余白（margin-left）をリセット */
+    .payment-select,
+    .address-display {
+        width: 100%;
+        /* 横幅いっぱいにする */
+        margin-left: 0;
+        /* PC用の60px余白を消す */
+        box-sizing: border-box;
+    }
+
+    /* 3. サイドバー（合計金額） */
+    .purchase-side {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .summary-table th,
+    .summary-table td {
+        padding: 20px 15px;
+        /* 余白を少し詰める */
+    }
+
+    .btn-purchase {
+        font-size: 16px;
+        padding: 18px;
+    }
+}

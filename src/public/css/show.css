@@ -1,0 +1,338 @@
+/* レイアウト全体 */
+.detail-container {
+    max-width: 1100px;
+    margin: 50px auto;
+    display: flex;
+    gap: 80px;
+    /* 画像と情報の間の余白 */
+    padding: 0 20px;
+    align-items: flex-start;
+}
+
+/* 左側：画像 */
+.detail-image {
+    flex: 1;
+    max-width: 500px;
+}
+
+.detail-image__wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* 正方形を維持 */
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+.detail-image__wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Soldラベルのスタイル（共通） --- */
+.sold-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff4d4d;
+    /* 赤色 */
+    color: #fff;
+    padding: 10px 30px;
+    /* 詳細画面は画像が大きいので少し広めに */
+    font-size: 18px;
+    /* 文字も少し大きくすると見やすいです */
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* 親要素（画像の箱）を基準にする設定 */
+.detail-image__wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 右側：詳細情報 */
+.detail-info {
+    flex: 1;
+}
+
+/* ==========================================
+いいね・コメントのアイコンエリア
+   ========================================== */
+.detail-actions {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 44px;
+    /* 幅を統一 */
+}
+
+/* アイコンを囲む箱のサイズを固定して、軸を揃える */
+.action-btn,
+.action-icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    /* 高さを揃えることで数字のラインが一直線になる */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-decoration: none;
+    /* 下線を消す */
+    color: inherit;
+}
+
+/* アイコン自体のサイズをここで統一 */
+.heart-icon,
+.comment-icon {
+    font-size: 28px;
+    /* 32pxより少し小さくして箱に収める */
+    line-height: 1;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+}
+
+/* ハートのスタイル */
+.heart-icon {
+    color: #333;
+    /* 未いいねはグレー */
+}
+
+.heart-icon.active {
+    color: #ff5a5f;
+    /* いいね済みは赤オレンジ */
+}
+
+/* コメントアイコンのスタイル */
+.comment-icon {
+    color: #333;
+}
+
+/* 数字のスタイル */
+.action-count {
+    font-size: 14px;
+    margin-top: 2px;
+    color: #333;
+    font-weight: 500;
+    line-height: 1;
+}
+
+/* ==========================================
+   ボタン・フォーム要素
+   ========================================== */
+.btn-primary {
+    display: block;
+    width: 100%;
+    background-color: #f16262;
+    /* スクリーンショットに近い赤色 */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px 0;
+    text-decoration: none;
+}
+
+.btn-secondary-color {
+    background-color: #f16262;
+    margin-top: 10px;
+}
+
+.comment-textarea {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 10px;
+    resize: vertical;
+    /* 縦方向だけリサイズ可能にする（横崩れを防ぐ） */
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* ==========================================
+   セクション（商品説明、商品の情報）
+   ========================================== */
+.detail-section {
+    margin-top: 40px;
+}
+
+.detail-section__title {
+    font-size: 22px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.detail-section__title--gray {
+    color: #888;
+    /* お好みのグレーの濃さに調整してください */
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.info-label {
+    width: 120px;
+    font-weight: bold;
+}
+
+.tag {
+    background-color: #e0e0e0;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+/* コメント一覧 */
+.comment-item {
+    margin-bottom: 25px;
+}
+
+.comment-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.user-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #ddd;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.user-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.comment-body {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* コメントフォーム */
+.comment-form {
+    margin-top: 15px;
+}
+
+.error-text {
+    color: #ff4d4d;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.btn-submit-comment {
+    width: 100%;
+    margin-top: 15px;
+    background-color: #f16262;
+    /* またはデザインに合わせた色 */
+}
+
+/* 未ログインメッセージ */
+.login-prompt {
+    background-color: #fff3f3;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.login-prompt a {
+    color: #ff4d4d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+
+/* --- 詳細画面のスマホ対応 (768px以下) --- */
+@media screen and (max-width: 768px) {
+
+    /* 1. 横並びを解除して縦に積む */
+    .detail-container {
+        flex-direction: column;
+        gap: 30px;
+        /* 画像と情報の間の隙間を調整 */
+        margin: 20px auto;
+        padding: 0 15px;
+        /* 左右に少し余白を作る */
+    }
+
+    /* 2. 画像エリアを横幅いっぱいにする */
+    .detail-image {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .detail-image__wrapper {
+        border-radius: 8px;
+        /* 角を少し丸くすると今風です */
+    }
+
+    /* 3. 情報エリアも横幅いっぱいにする */
+    .detail-info {
+        width: 100%;
+    }
+
+    /* 4. タイトルや価格の文字サイズを調整 */
+    .detail-info__title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .price-amount {
+        font-size: 28px;
+    }
+
+    /* 5. いいね・コメントアイコンの配置を左寄せに */
+    .detail-actions {
+        justify-content: flex-start;
+        gap: 30px;
+    }
+
+    /* 6. カテゴリータグなどがはみ出ないように調整 */
+    .info-label {
+        width: 100px;
+        /* 少し狭くする */
+        font-size: 14px;
+    }
+
+    .tag {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+}

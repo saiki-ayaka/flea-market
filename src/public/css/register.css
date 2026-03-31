@@ -1,0 +1,119 @@
+/* 画面全体を白背景に */
+.register__wrapper {
+    background-color: #fff;
+    min-height: calc(100vh - 80px);
+    /* ヘッダーの高さを考慮 */
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    /* 上部に少し余白 */
+}
+
+/* コンテンツの幅だけ指定（枠線や影はなし） */
+.register__content {
+    width: 100%;
+    max-width: 500px;
+    /* 少しスリムにすると完成イメージに近づきます */
+    padding: 20px;
+}
+
+.register__title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* 入力エリアのスタイル */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    /* 枠線を少しハッキリさせる */
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* ボタン・リンク */
+.form-actions {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #eb6a62;
+    /* 完成イメージの赤色 */
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-link {
+    display: block;
+    margin-top: 20px;
+    color: #4a90e2;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+/* --- 会員登録画面のスマホ対応 (480px以下) --- */
+@media screen and (max-width: 480px) {
+    .register__content {
+        /* 幅を固定(500px)ではなく、画面幅の90%にする */
+        width: 90%;
+        max-width: none;
+        padding: 10px;
+    }
+
+    .register__title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* 入力グループの間隔を少し詰めて、1画面に収まりやすくする */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-input {
+        padding: 15px;
+        font-size: 16px;
+        /* ズーム防止用 */
+    }
+
+    /* ボタンの上の余白(80px)をスマホでは少し詰める */
+    .form-actions {
+        margin-top: 40px;
+    }
+
+    .btn-submit {
+        padding: 15px;
+        font-size: 16px;
+    }
+}

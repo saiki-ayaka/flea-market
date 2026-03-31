@@ -1,0 +1,61 @@
+.address-edit {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.address-edit__title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.address-edit__group {
+    margin-bottom: 25px;
+}
+
+.address-edit__label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.address-edit__input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.address-edit__btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #f36d6d;
+    /* イメージ図の朱色に近い色 */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.address-edit__btn:hover {
+    background-color: #e05c5c;
+}
+
+/* address.css の最後などでOKです */
+.error-message {
+    color: red;
+    /* 文字色を赤にする */
+    font-size: 14px;
+    /* 必要に応じて少し小さくする */
+    margin-top: 5px;
+    /* 入力欄との間隔を空ける */
+}

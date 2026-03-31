@@ -1,0 +1,104 @@
+.login-container {
+    max-width: 400px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 24px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.login-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* 入力フィールド */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    /* 枠線を少し太めに */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* ログインボタン（スクショの色味） */
+.btn-login {
+    width: 100%;
+    background-color: #f16262;
+    /* のボタン色 */
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.register-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register-link a {
+    color: #3b82f6;
+    /* 青色のリンク */
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+
+
+/* --- ログイン画面のスマホ対応 (480px以下) --- */
+@media screen and (max-width: 480px) {
+    .login-container {
+        /* 幅を固定(400px)ではなく、画面幅の90%にする */
+        width: 90%;
+        max-width: none;
+        margin: 40px auto;
+        /* 上下の余白も少し詰めると収まりが良いです */
+    }
+
+    .login-title {
+        font-size: 20px;
+        /* タイトルを少しだけ小さく */
+        margin-bottom: 30px;
+    }
+
+    /* 入力欄のパディングを少し調整して指でタップしやすく */
+    input[type="email"],
+    input[type="password"] {
+        padding: 15px;
+        font-size: 16px;
+        /* スマホでズームされないための最小サイズ */
+    }
+
+    .btn-login {
+        padding: 18px;
+        /* ボタンを少し大きくして押しやすく */
+        font-size: 18px;
+    }
+}

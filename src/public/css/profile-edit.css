@@ -1,0 +1,147 @@
+.profile__wrapper {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.profile__content {
+    width: 100%;
+    max-width: 600px;
+}
+
+.profile__title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* 画像選択部分 */
+.profile__image-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.profile__image-preview {
+    width: 100px;
+    height: 100px;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+    /* 円形にする */
+    overflow: hidden;
+    /* はみ出た画像を隠す */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile__image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 縦横比を維持したまま枠を埋める */
+}
+
+.profile__image-label {
+    color: #ff5a5f;
+    border: 1px solid #ff5a5f;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.profile__image-input {
+    display: none;
+    /* デフォルトのファイル選択ボタンは隠す */
+}
+
+/* 共通フォームスタイル（会員登録時と同様） */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #ff5a5f;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.error {
+    color: #ff4d4d;
+    /* コーチテック風の赤色 */
+    font-size: 14px;
+    /* 文字サイズ */
+    margin-top: 5px;
+    /* 入力欄との隙間 */
+    font-weight: bold;
+    /* 必要なら太字に */
+}
+
+
+
+/* --- プロフィール編集画面のスマホ対応 (480px以下) --- */
+@media screen and (max-width: 480px) {
+    .profile__content {
+        width: 95%;
+        /* 左右に少しだけ余裕を持たせる */
+        padding: 0;
+    }
+
+    .profile__title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* 画像選択部分を中央寄せの縦並びに（お好みで） */
+    .profile__image-section {
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .profile__image-preview {
+        width: 120px;
+        /* スマホでは少し大きくしてもOK */
+        height: 120px;
+        margin: 0 auto;
+    }
+
+    .profile__image-label {
+        display: inline-block;
+        width: auto;
+    }
+
+    /* 入力欄のサイズ感を他画面と統一 */
+    .form-input {
+        padding: 12px;
+        font-size: 16px;
+        /* ズーム防止 */
+    }
+
+    .btn-submit {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
