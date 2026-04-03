@@ -140,9 +140,9 @@ php artisan migrate:fresh --seed
 | user_id | varchar(255) | | | ○ | 購入者ID |
 | item_id | varchar(255) | | ○ | ○ | 商品ID |
 | payment_method | varchar(255) | | | ○ | 支払い方法 |
-| shipping_postcode | varchar(255) | | | ○ | 配送先郵便番号 |
-| shipping_address | varchar(255) | | | ○ | 配送先住所 |
-| shipping_building | varchar(255) | | | | 配送先建物名 |
+| postcode | varchar(255) | | | ○ | 配送先郵便番号 |
+| address | varchar(255) | | | ○ | 配送先住所 |
+| building | varchar(255) | | | | 配送先建物名 |
 
 #### favoritesテーブル (お気に入り)
 | カラム名 | 型 | PK | NOT NULL | FK | 説明 |
