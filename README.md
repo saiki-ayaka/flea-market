@@ -14,7 +14,7 @@
 - **フレームワーク**: Laravel 10.50.2
 - **サーバー**: nginx 1.21.1
 - **データベース**: MySQL 8.0.26
-- **インフラ/管理ツール**: 
+- **インフラ/管理ツール**:
   - Docker / Docker Compose
   - phpMyAdmin
   - GitHub
@@ -85,29 +85,89 @@ php artisan migrate:fresh --seed
 - メールアドレス1: test@example.com / パスワード: password
 - メールアドレス2: test2@example.com / パスワード: password
 
-## 3. データベース設計 (ER図)
+## 3. データベース設計
 データの整合性を保つため、以下の設計に基づいています。
-
-## 4. 設計書
+### ER図
 ![ER図](./docs/database-design.png)
-- [テーブル仕様書](https://docs.google.com/spreadsheets/d/1Rh6mHRqrsmxTM85r7PLgx4rUoGHsw_PO7napCECmD4k/edit?gid=1188247583#gid=1188247583)
+### テーブル仕様書
 
-## 5. 主要機能一覧
-- ユーザー登録・ログイン機能
-- 商品一覧表示・詳細表示
-- 商品出品機能（画像アップロード含む）
-- 商品購入機能（Stripe決済等）
-- プロフィール編集機能
-- お気に入り登録・解除機能
-- コメント投稿機能
-- 商品検索機能
+#### usersテーブル (利用ユーザー)
+| カラム名 | 型 | PK | UNIQUE | NOT NULL | 説明 |
+| :--- | :--- | :---: | :---: | :---: | :--- |
+| id | unsigned bigint | ○ | | ○ | ユーザーID |
+| name | varchar(255) | | | ○ | ユーザー名 |
+| email | varchar(255) | | ○ | ○ | メールアドレス |
+| password | varchar(255) | | | ○ | パスワード |
+| postcode | varchar(255) | | | | 郵便番号 |
+| address | varchar(255) | | | | 住所 |
+| building | varchar(255) | | | | 建物名 |
+| image_url | varchar(255) | | | | プロフィール画像パス |
 
-### テーブル一覧
-* **users**: ユーザー認証・プロフィール情報（配送先住所、プロフィール画像）
-* **items**: 出品商品データ（出品者・状態・カテゴリ・ブランド等の紐付け）
-* **favorites**: お気に入り登録機能（ユーザーと商品の重複登録を制限）
-* **comments**: 商品詳細ページでのコメント投稿
-* **conditions**: 商品の状態（「良好」「傷あり」などの選択肢）
-* **categories**: 商品のカテゴリ（「家電」「メンズ」などの選択肢）
-* **category_item**: 商品とカテゴリを紐付ける中間テーブル（多対多）
-* **orders**: 商品の注文・配送情報（購入時の支払い方法・配送先を保持）
+#### itemsテーブル (出品商品)
+| カラム名 | 型 | PK | NOT NULL | FK | 説明 |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| id | unsigned bigint | ○ | ○ | | 商品ID |
+| user_id | unsigned bigint | | ○ | users(id) | 出品者ID |
+| condition_id | unsigned bigint | | ○ | conditions(id) | 商品状態ID |
+| name | varchar(255) | | ○ | | 商品名 |
+| description | text | | ○ | | 商品説明 |
+| price | unsigned int | | ○ | | 販売価格 |
+| image_url | varchar(255) | | ○ | | 商品画像パス |
+| brand | varchar(255) | | | | ブランド名 |
+
+#### categoriesテーブル (カテゴリー名)
+| カラム名 | 型 | PK | NOT NULL | 説明 |
+| :--- | :--- | :---: | :---: | :--- |
+| id | unsigned bigint | ○ | ○ | カテゴリーID |
+| name | varchar(255) | | ○ | カテゴリー名 |
+
+#### category_itemテーブル (商品-カテゴリー中間テーブル)
+| カラム名 | 型 | PK | NOT NULL | FK | 説明 |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| item_id | unsigned bigint | ○ | ○ | items(id) | 商品ID |
+| category_id | unsigned bigint | ○ | ○ | categories(id) | カテゴリーID |
+
+#### conditionsテーブル (商品状態)
+| カラム名 | 型 | PK | NOT NULL | 説明 |
+| :--- | :--- | :---: | :---: | :--- |
+| id | unsigned bigint | ○ | ○ | 状態ID |
+| name | varchar(255) | | ○ | 状態名（良好、傷あり等） |
+
+#### ordersテーブル (注文情報)
+| カラム名 | 型 | PK | UNIQUE | NOT NULL | 説明 |
+| :--- | :--- | :---: | :---: | :---: | :--- |
+| id | unsigned bigint | ○ | | ○ | 注文ID |
+| user_id | varchar(255) | | | ○ | 購入者ID |
+| item_id | varchar(255) | | ○ | ○ | 商品ID |
+| payment_method | varchar(255) | | | ○ | 支払い方法 |
+| shipping_postcode | varchar(255) | | | ○ | 配送先郵便番号 |
+| shipping_address | varchar(255) | | | ○ | 配送先住所 |
+| shipping_building | varchar(255) | | | | 配送先建物名 |
+
+#### favoritesテーブル (お気に入り)
+| カラム名 | 型 | PK | NOT NULL | FK | 説明 |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| id | unsigned bigint | ○ | ○ | | ID |
+| user_id | unsigned bigint | | ○ | users(id) | ユーザーID |
+| item_id | unsigned bigint | | ○ | items(id) | 商品ID |
+| created_at | timestamp | | | | 作成日時 |
+| updated_at | timestamp | | | | 更新日時 |
+
+#### commentsテーブル (コメント)
+| カラム名 | 型 | PK | NOT NULL | FK | 説明 |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| id | unsigned bigint | ○ | ○ | | ID |
+| user_id | unsigned bigint | | ○ | users(id) | ユーザーID |
+| item_id | unsigned bigint | | ○ | items(id) | 商品ID |
+| comment | text | | ○ | | コメント内容 |
+
+
+## 4. 主要機能一覧
+- ユーザー認証・認可: 登録、ログイン、メール認証、ログアウト機能
+- 商品一覧・詳細: 全商品表示、自分以外の出品物のみ表示（マイリスト）、詳細情報閲覧
+- 検索・絞り込み: 商品名でのキーワード検索機能
+- 商品出品: 画像アップロード、複数カテゴリ選択、状態選択、価格設定
+- お気に入り機能: 商品詳細からの登録・解除、マイページでの一覧表示
+- コメント機能: 出品者への質問や購入希望者との交流
+- 購入・決済機能: Stripe を利用したクレジットカード決済、配送先情報の入力
+- プロフィール管理: 住所、プロフィール画像の変更
