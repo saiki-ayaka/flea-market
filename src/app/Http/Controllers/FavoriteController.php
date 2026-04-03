@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
-    public function toggle($id) // パラメータ名は route と合わせる
+    public function toggle($id)
     {
         $user = Auth::user();
         $item = Item::findOrFail($id);

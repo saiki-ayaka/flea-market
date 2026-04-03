@@ -44,7 +44,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 
     public function register(RegisterRequest $request)
@@ -76,7 +76,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'postcode' => $request->postcode,
             'address' => $request->address,
-            'building' => $request->building, // 建物名
+            'building' => $request->building,
         ]);
 
         if ($request->hasFile('image')) {

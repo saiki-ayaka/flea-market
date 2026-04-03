@@ -53,11 +53,6 @@ class ItemController extends Controller
         return view('items.show', ['item' => $item]);
     }
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
     public function storeComment(CommentRequest $request, $id)
     {
         \App\Models\Comment::create([

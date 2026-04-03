@@ -20,7 +20,6 @@ class Order extends Model
 
     public function item()
     {
-        // 1つの注文は1つの商品に属する
         return $this->belongsTo(Item::class);
     }
 }
